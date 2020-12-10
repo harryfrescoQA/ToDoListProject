@@ -18,27 +18,27 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
-import com.example.demo.dto.BookDTO;
-import com.example.demo.persistence.domain.Book;
-import com.example.demo.service.BookService;
+import com.example.demo.dto.ItemDTO;
+import com.example.demo.persistence.domain.Item;
+import com.example.demo.service.ItemService;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/book") // this is to further define the path
-public class BookController {
+@RequestMapping("/item") // this is to further define the path
+public class ItemController {
 
-		private BookService service;
+		private ItemService service;
 		
 		@Autowired
-		public BookController(BookService service) {
+		public ItemController(ItemService service) {
 			super();
 			this.service = service;
 		}
 		
 		// Create method
 		@PostMapping("/create")
-		public ResponseEntity<BookDTO> create(@RequestBody Book book) {
-			BookDTO created = this.service.create(book);
+		public ResponseEntity<ItemDTO> create(@RequestBody Item item) {
+			ItemDTO created = this.service.create(item);
 			return new ResponseEntity<>(created, HttpStatus.CREATED);
 			// http status code - 201 (created)
 
@@ -46,26 +46,26 @@ public class BookController {
 
 		// read all method
 		@GetMapping("/read")
-		public ResponseEntity<List<BookDTO>> read() {
+		public ResponseEntity<List<ItemDTO>> read() {
 			return ResponseEntity.ok(this.service.readAll());
 			// ok - 200
 		}
 
 		// read one
 		@GetMapping("/read/{id}")
-		public ResponseEntity<BookDTO> readOne(@PathVariable Long id) {
+		public ResponseEntity<ItemDTO> readOne(@PathVariable Long id) {
 			return ResponseEntity.ok(this.service.readOne(id));
 		}
 
 		// update
 		@PutMapping("/update/{id}")
-		public ResponseEntity<BookDTO> update(@PathVariable Long id, @RequestBody BookDTO bookDTO) {
+		public ResponseEntity<ItemDTO> update(@PathVariable Long id, @RequestBody ItemDTO bookDTO) {
 			return new ResponseEntity<>(this.service.update(bookDTO, id), HttpStatus.ACCEPTED);
 		}
 
 		// Delete one
 		@DeleteMapping("/delete/{id}")
-		public ResponseEntity<BookDTO> delete(@PathVariable Long id) {
+		public ResponseEntity<ItemDTO> delete(@PathVariable Long id) {
 			return this.service.delete(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
 					// no_content - if deleted successfully then should return nothing
 					: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
