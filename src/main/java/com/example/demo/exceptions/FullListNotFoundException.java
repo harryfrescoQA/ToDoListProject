@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR, reason = "List does not exist with that id try again")
 
-public class ItemNotFoundException extends EntityNotFoundException {
+public class FullListNotFoundException extends EntityNotFoundException {
 
 	/**
 	 * 
