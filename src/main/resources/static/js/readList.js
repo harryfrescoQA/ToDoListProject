@@ -128,6 +128,7 @@ deleteButton.setAttribute("id", "listButton");
 deleteButton.onclick = function(){
   deleteByid(data.id);
   alert("Deleted item "+data.id);
+  window.location.reload;
   return false;
 };
 deleteButton.appendChild(deleteButtonValue);

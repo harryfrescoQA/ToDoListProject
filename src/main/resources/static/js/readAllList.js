@@ -95,6 +95,7 @@ fetch('http://localhost:9092/list/read')
         deleteButton.onclick = function(){
           deleteByid(record.id);
           alert("Deleted!");
+          window.location.reload;
           return false;
         };
         deleteButton.appendChild(deleteButtonValue);
