@@ -17,3 +17,22 @@ body{
 #landingA{
     text-decoration: none;
 }
+#readList{
+   
+    text-align: center;
+}
+#listDiv{
+background-color: white;
+border-radius: 3px;
+padding: 15px;
+margin: 15px    ;
+    }
+
+#listButton{
+    margin:15px;
+}
+
+#createList{
+
+text-align: center;
+}
