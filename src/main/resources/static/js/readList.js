@@ -1,5 +1,6 @@
 const params = new URLSearchParams(window.location.search);
  
+
 for(let param of params ){
     let id = param[1];
     console.log(id);
@@ -42,6 +43,7 @@ function getData(id){
     window.location.replace("createItem.html?id="+id);
     // postData(noteTitle,noteBody)
   });
+
 }
 
   function showData(div,data){
@@ -77,7 +79,7 @@ function getData(id){
                   newDiv.appendChild(text);
                   div.appendChild(newDiv);
                   div.appendChild(br);
-                  createButtons(data[values][items], newDiv, div);
+                  createButtons(data[values][items], newDiv);
                }
              }
              else{
@@ -93,7 +95,22 @@ function getData(id){
 
 function createButtons(data, newDiv){
   
+  doneButton = document.createElement("a");
+  let doneButtonValue = document.createTextNode("Done")
+  doneButton.className ="btn btn-success";
+  doneButton.href="javascript:markAsDone("+data.id+")";
+  doneButton.setAttribute("id", "listButton");
+  doneButton.appendChild(doneButtonValue);
+  newDiv.appendChild(doneButton);
 
+  // document
+  // .querySelector("#doneButton")
+  // .addEventListener("click", function (stop) {
+  //   stop.preventDefault();
+  //   //let formElements = document.querySelector("form.viewRecord").elements;
+  //   markAsDone(data.id);
+  //   // postData(noteTitle,noteBody)
+  // });
   let editButton = document.createElement("a");
   let editButtonValue = document.createTextNode("Edit Item")
   editButton.className ="btn btn-secondary";
@@ -115,6 +132,58 @@ deleteButton.onclick = function(){
 };
 deleteButton.appendChild(deleteButtonValue);
 newDiv.appendChild(deleteButton)
+}
+
+function markAsDone(id){
+
+ //newDiv.style.textDecoration='line-through';
+
+ fetch('http://localhost:9092/item/read/'+id)
+ .then(
+   function(response) {
+     if (response.status !== 200) {
+       console.log('Looks like there was a problem. Status Code: ' +
+         response.status);
+       return;
+     }
+
+     // Examine the text in the response
+     response.json().then(function(data) {
+      if(data.done==false){
+        data.done = true;
+      }
+      else{
+        data.done = false;
+      }
+      
+     // console.log("Data to post",data)
+      
+      
+      fetch("http://localhost:9092/item/update/"+id, {
+        method: 'put',
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        },
+        body:JSON.stringify(data)
+      })
+      .then(function (data) {
+        console.log('Request succeeded with JSON response', data);
+        window.location.reload();
+      })
+      .catch(function (error) {
+        console.log('Request failed', error);
+      });
+      // let dataKeys = Object.keys(data[0]);
+       
+       //createTitles(div,data);
+       
+     });
+   }
+ )
+ .catch(function(err) {
+   console.log('Fetch Error :-S', err);
+ });
+
 }
 function deleteByid(id){
   fetch("http://localhost:9092/item/delete/"+id, {
