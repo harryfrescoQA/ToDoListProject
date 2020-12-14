@@ -1,6 +1,7 @@
 package com.example.demo.persistence.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -77,5 +78,63 @@ public class ItemUnitTest {
 		assertEquals(true, item.isDone());
 	}
 	//To String
-	// Equals
+	
+	@Test
+	public void toStringTest() {
+		Item item = new Item(1l,"Title", "Message", false);
+		String testString = "Item(id=1, title=Title, message=Message, done=false, fullList=null)";
+		assertEquals(testString, item.toString());
+	}
+	
+	@Test
+	public void equalsTest() {
+		Item item = new Item(1l,"Title", "Message", false);
+		Item item2 = new Item(1l,"Title", "Message", false);
+		
+		assertTrue(item.equals(item2));
+	}
+	
+	@Test
+	public void equalsTestFalse() {
+		Item item = new Item(1l,"Title", "Message", false);
+		Item item2 = new Item(2l,"Title", "Message", false);
+		
+		assertFalse(item.equals(item2));
+	}
+	
+	@Test
+	public void equalsTestFalse2() {
+		Item item = new Item(1l,"Title", "Message", false);
+		Item item2 = new Item(1l,"Title2", "Message", false);
+		
+		assertFalse(item.equals(item2));
+	}
+	
+	@Test
+	public void equalsTestFalse3() {
+		Item item = new Item(1l,"Title", "Message", false);
+		Item item2 = new Item(1l,"Title", "Message2", false);
+		
+		assertFalse(item.equals(item2));
+	}
+	
+	@Test
+	public void equalsTestFalse4() {
+		Item item = new Item(1l,"Title", "Message", false);
+		Item item2 = new Item(1l,"Title", "Message", true);
+		
+		assertFalse(item.equals(item2));
+	}
+	
+	
+	@Test
+	public void hashCodeTest() {
+		Item item = new Item(1l,"Title", "Message", false);
+	
+		assertEquals(-310980353, item.hashCode());
+	}
+
+	
+	//Hash code
+	//SetFullList
 }
