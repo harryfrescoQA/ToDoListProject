@@ -115,7 +115,7 @@ function createButtons(data, newDiv){
   let editButtonValue = document.createTextNode("Edit Item")
   editButton.className ="btn btn-secondary";
   editButton.setAttribute("id", "listButton");
-  editButton.href="editList.html?id="+data.id
+  editButton.href="editItem.html?id="+data.id;
   editButton.appendChild(editButtonValue);
   newDiv.appendChild(editButton);
 

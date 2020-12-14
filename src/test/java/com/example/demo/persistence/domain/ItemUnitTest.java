@@ -40,7 +40,7 @@ public class ItemUnitTest {
 	@Test
 	public void getTitleIdTest() {
 		Item item = new Item(1l,"Title", "Message", false);
-		assertEquals("Test", item.getTitle());
+		assertEquals("Title", item.getTitle());
 	}
 	
 	@Test
