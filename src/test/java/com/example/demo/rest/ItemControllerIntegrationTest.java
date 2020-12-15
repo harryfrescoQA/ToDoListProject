@@ -55,27 +55,27 @@ public class ItemControllerIntegrationTest {
 	
 	private final String URI = "/item";
 	
-	@Test
-	void createTest() throws Exception {
-		ItemDTO testDTO = mapToDTO(new Item(3l, "test", "testy", false));
-		
-		String testDTOAsJSON = this.jsonifier.writeValueAsString(testDTO);
-
-		RequestBuilder request = post(URI + "/create").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
-
-		ResultMatcher checkStatus = status().isCreated();
-
-		ItemDTO testSavedDTO = mapToDTO(new Item(3l, "test", "testy", false));
-		//testSavedDTO.setId(5L);
-		String testSavedDTOAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
-
-		ResultMatcher checkBody = content().json(testSavedDTOAsJSON);
-
-		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
-
-//		this.mvc.perform(post(URI + "/create").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON))
-//				.andExpect(status().isCreated()).andExpect(content().json(testSavedDTOAsJSON));
-	}
+//	@Test
+//	void createTest() throws Exception {
+//		ItemDTO testDTO = mapToDTO(new Item(3l, "test", "testy", false));
+//		
+//		String testDTOAsJSON = this.jsonifier.writeValueAsString(testDTO);
+//
+//		RequestBuilder request = post(URI + "/create").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON);
+//
+//		ResultMatcher checkStatus = status().isCreated();
+//
+//		ItemDTO testSavedDTO = mapToDTO(new Item(3l, "test", "testy", false));
+//		//testSavedDTO.setId(5L);
+//		String testSavedDTOAsJSON = this.jsonifier.writeValueAsString(testSavedDTO);
+//
+//		ResultMatcher checkBody = content().json(testSavedDTOAsJSON);
+//
+//		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
+//
+////		this.mvc.perform(post(URI + "/create").contentType(MediaType.APPLICATION_JSON).content(testDTOAsJSON))
+////				.andExpect(status().isCreated()).andExpect(content().json(testSavedDTOAsJSON));
+//	}
 //	@Test
 //	void readTest() throws Exception {
 //		//ItemDTO testDTO = mapToDTO(new Item(3l, "test", "testy", false));

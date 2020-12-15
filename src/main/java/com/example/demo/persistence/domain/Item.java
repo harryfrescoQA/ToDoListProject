@@ -32,6 +32,7 @@ public class Item {
 	@ManyToOne
 	private FullList fullList;
 	
+
 	public Item(Long id, @NotNull String title, @NotNull String message, @NotNull boolean done) {
 		super();
 		this.id = id;

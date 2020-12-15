@@ -126,6 +126,38 @@ public class ItemUnitTest {
 		assertFalse(item.equals(item2));
 	}
 	
+	@Test
+	public void equalsTestFalseNull() {
+		Item item = new Item(1l,"Title", "Message", false);
+		Item item2 = new Item(null,"Title", "Message", false);
+		
+		assertFalse(item.equals(item2));
+	}
+	
+	@Test
+	public void equalsTestFalseNull2() {
+		Item item = new Item(1l,"Title", "Message", false);
+		Item item2 = new Item(1l,null, "Message", false);
+		
+		assertFalse(item.equals(item2));
+	}
+	
+	@Test
+	public void equalsTestFalseNull3() {
+		Item item = new Item(1l,"Title", "Message", false);
+		Item item2 = new Item(1l,"Title", null, false);
+		
+		assertFalse(item.equals(item2));
+	}
+	
+	@Test
+	public void equalsTestFalseNull4() {
+		Item item = new Item(1l,"Title", "Message", false);
+		Item item2 = new Item();
+		
+		assertFalse(item.equals(item2));
+	}
+	
 	
 	@Test
 	public void hashCodeTest() {
