@@ -8,11 +8,11 @@
 		<version>2.4.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>Book-Library-Project</artifactId>
+	<groupId>com.qa</groupId>
+	<artifactId>To-Do-List-Project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Book-Library-Project</name>
-	<description>Demo project for Spring Boot</description>
+	<name>To-Do-List-Project</name>
+	<description>To-Do List Project</description>
 
 	<properties>
 		<java.version>11</java.version>
@@ -75,6 +75,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+	
 		</plugins>
 	</build>
 
