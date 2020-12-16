@@ -24,7 +24,7 @@ Install: Maven
 
 ## Deployment
 
-To run the .jar file from the command-line, navigate to the MainProject where the To-Do-List-Project-x.x.x-SNAPSHOT.jar_ file is and execute the following command:
+To run the .jar file from the command-line, navigate to where the To-Do-List-Project-x.x.x-SNAPSHOT.jar_ file is and execute the following command:
 
 Example:
 ```
@@ -38,6 +38,7 @@ localhost:9092
 
 The webpage is then shown. This is where you can select the entities and then perform CRUD operations.
 
+To quit, in the command-line press Ctrl C
 
 
 ## Running in IDE
