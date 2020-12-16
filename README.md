@@ -86,7 +86,7 @@ To run all of the tests, in the Package Explorer, right-click on the _src/test/j
 It usually takes 30 seconds to complete all tests. The coverage for src/test/java is 81.0%
 
 ### Selenium
-Once the MainProject is running locally on port 9092, import the Selenium project, right-click Selenium/src/test/java, Run As -> JUnit Test.
+**Once the MainProject is running locally on port 9092**, import the Selenium project, right-click Selenium/src/test/java, Run As -> JUnit Test.
 This will then test the webpage by performing tasks on it.
 
 At the moment, the tests are:
