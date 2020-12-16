@@ -62,7 +62,7 @@ The test suites are:
 
 To run all of the tests, in the Package Explorer, right-click on the _src/test/java_ folder then Coverage As, then JUnit Test.
 
-It usually takes 30 seconds to complete all tests.
+It usually takes 30 seconds to complete all tests. The coverage for src/test/java is 81.0%
 
 
 ## Deployment
