@@ -1,27 +1,26 @@
+// Get params from url to read a list
 const params = new URLSearchParams(window.location.search);
  
 for(let param of params ){
     let id = param[1];
-    console.log(id);
+    // Get data
     getData(id)
 }
 
-
+// Get list from url
 function getData(id){
   
   fetch('http://localhost:9092/list/read/'+id)
   .then(
     function(response) {
       if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: ' +
-          response.status);
+        console.log('Error with code: ' + response.status);
         return;
       }
 
-      // Examine the text in the response
       response.json().then(function(data) {
+        // Show data to form
         showData(data);
-        
       });
     }
   )
@@ -29,14 +28,14 @@ function getData(id){
     console.log('Fetch Error :-S', err);
   });
 }
-
+// Show data to form
 function showData(data){
   document.querySelector("input#idInput").value = data.id;
   document.querySelector("input#nameInput").value = data.title;
 }
 
 
-
+// Listen for submit button
 document
 .querySelector("form.viewRecord")
 .addEventListener("submit", function (stop) {
@@ -49,13 +48,14 @@ document
     "id": id,
     "title":name
   }
-
+  // Put to url
   sendData(data)
+  // Send user to start page
   window.location.replace("startPage.html");
 });
 
-  
-  function sendData(data){
+// Put to url
+function sendData(data){
     fetch("http://localhost:9092/list/update/"+data.id, {
         method: 'put',
         headers: {
@@ -64,9 +64,9 @@ document
         body:JSON.stringify(data)
       })
       .then(function (data) {
-        console.log('Request succeeded with JSON response', data);
+        console.log('Successs with resp: ', data);
       })
       .catch(function (error) {
-        console.log('Request failed', error);
+        console.log('failed! response: ', error);
       });
-    }
+}

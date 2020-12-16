@@ -1,3 +1,4 @@
+// Get form element when button pressed
 document
   .querySelector("form.viewRecord")
   .addEventListener("submit", function (stop) {
@@ -7,22 +8,20 @@ document
 
     let name=formElements["nameInput"].value;
 
-
-
+    // JSON object for data
     let data = {
 
       "title":name
 
     }
-    console.log("Data to post",data)
-  
-
+    // Send to create function
     create(data)
+    // Send user to start page
     window.location.replace("startPage.html");
-    // postData(noteTitle,noteBody)
   });
 
-  function create(data){
+// Post data to url
+function create(data){
     fetch("http://localhost:9092/list/create", {
         method: 'post',
         headers: {
@@ -31,9 +30,9 @@ document
         body:JSON.stringify(data)
       })
       .then(function (data) {
-        console.log('Request succeeded with JSON response', data);
+        console.log('Success! Response: ', data);
       })
       .catch(function (error) {
-        console.log('Request failed', error);
+        console.log('Failed! Response: ', error);
       });
-    }
+}
