@@ -18,11 +18,7 @@ import com.example.demo.util.SpringBeanUtil;
 public class FullListService {
 	private FullListRepo repo;
 
-	// makes object mapping easy by automatically determining how one object model
-	// maps to another.
 	private ModelMapper mapper;
-
-	// we create our mapToDto
 
 	private FullListDTO mapToDTO(FullList fullList) {
 		return this.mapper.map(fullList, FullListDTO.class);

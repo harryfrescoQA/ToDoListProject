@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class ItemDTO {
+	// DTO for the Item Object
 	private Long id;
 	private String title;
 	private String message;

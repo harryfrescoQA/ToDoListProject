@@ -35,7 +35,7 @@ public class ItemController {
 			this.service = service;
 		}
 		
-		// Create method
+		// Create
 		@PostMapping("/create")
 		public ResponseEntity<ItemDTO> create(@RequestBody Item item) {
 			ItemDTO created = this.service.create(item);
@@ -44,7 +44,7 @@ public class ItemController {
 
 		}
 
-		// read all method
+		// read all
 		@GetMapping("/read")
 		public ResponseEntity<List<ItemDTO>> read() {
 			return ResponseEntity.ok(this.service.readAll());
@@ -52,12 +52,14 @@ public class ItemController {
 		}
 
 		// read one
+		// Takes in ID
 		@GetMapping("/read/{id}")
 		public ResponseEntity<ItemDTO> readOne(@PathVariable Long id) {
 			return ResponseEntity.ok(this.service.readOne(id));
 		}
 
 		// update
+		// Takes in ID and DTO
 		@PutMapping("/update/{id}")
 		public ResponseEntity<ItemDTO> update(@PathVariable Long id, @RequestBody ItemDTO bookDTO) {
 			return new ResponseEntity<>(this.service.update(bookDTO, id), HttpStatus.ACCEPTED);
@@ -67,8 +69,7 @@ public class ItemController {
 		@DeleteMapping("/delete/{id}")
 		public ResponseEntity<ItemDTO> delete(@PathVariable Long id) {
 			return this.service.delete(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
-					// no_content - if deleted successfully then should return nothing
+					// if successful, return nothing
 					: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-			// if the record isnt found!
 		}
 }

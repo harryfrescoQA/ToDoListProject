@@ -23,6 +23,7 @@ public class FullList {
 	@NotNull
 	public String title;
 	
+	// List has many items
 	@OneToMany(mappedBy = "fullList", fetch = FetchType.EAGER)
 	private List<Item> items;
 

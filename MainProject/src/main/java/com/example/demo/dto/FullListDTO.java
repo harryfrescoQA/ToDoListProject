@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class FullListDTO {
+	
+	// DTO for the List Object
 	private Long id;
 	private String title;
 	private List<ItemDTO> items = new ArrayList<>();

@@ -29,6 +29,7 @@ public class Item {
 	@NotNull
 	private boolean done;
 	
+	// Many items have one list
 	@ManyToOne
 	private FullList fullList;
 	

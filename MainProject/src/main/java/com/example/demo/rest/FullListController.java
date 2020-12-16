@@ -31,40 +31,42 @@ public class FullListController {
 		this.service = service;
 	}
 	
-	// Create method
+	// /list/create
+	// Takes in a fullList Object
 		@PostMapping("/create")
 		public ResponseEntity<FullListDTO> create(@RequestBody FullList fullList) {
 			FullListDTO created = this.service.create(fullList);
 			return new ResponseEntity<>(created, HttpStatus.CREATED);
-			// http status code - 201 (created)
+
 
 		}
 
-		// read all method
+		// read all
 		@GetMapping("/read")
 		public ResponseEntity<List<FullListDTO>> read() {
 			return ResponseEntity.ok(this.service.readAll());
-			// ok - 200
 		}
 
 		// read one
+		// Takes in ID
 		@GetMapping("/read/{id}")
 		public ResponseEntity<FullListDTO> readOne(@PathVariable Long id) {
 			return ResponseEntity.ok(this.service.readOne(id));
 		}
 
 		// update
+		// Takes in ID
 		@PutMapping("/update/{id}")
 		public ResponseEntity<FullListDTO> update(@PathVariable Long id, @RequestBody FullListDTO fullListDTO) {
 			return new ResponseEntity<>(this.service.update(fullListDTO, id), HttpStatus.ACCEPTED);
 		}
 
 		// Delete one
+		//Takes in ID
 		@DeleteMapping("/delete/{id}")
 		public ResponseEntity<FullListDTO> delete(@PathVariable Long id) {
 			return this.service.delete(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
-					// no_content - if deleted successfully then should return nothing
-					: new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			// if the record isnt found!
+					//if successful, return nothing
+					: new ResponseEntity<>(HttpStatus.NOT_FOUND);// if the record isnt found!
 		}
 }
