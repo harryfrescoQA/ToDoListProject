@@ -75,10 +75,10 @@ src/test/java
 ```
 
 The test suites are: 
--Controllers
--DTO
--Domain
--Service
+*Controllers
+*DTO
+*Domain
+*Service
 
 
 To run all of the tests, in the Package Explorer, right-click on the _src/test/java_ folder then Coverage As, then JUnit Test.
@@ -90,9 +90,9 @@ It usually takes 30 seconds to complete all tests. The coverage for src/test/jav
 This will then test the webpage by performing tasks on it.
 
 At the moment, the tests are:
--Add List
--Add Item to the List
--Check if both are successful
+*Add List
+*Add Item to the List
+*Check if both are successful
 
 
 
