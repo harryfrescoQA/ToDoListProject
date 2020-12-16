@@ -2,6 +2,7 @@
 
 This To-Do List System uses a webpage to allow the user to perform CRUD operations on items in lists. A list can have many items. The back-end is served by Java using SpringBoot and a SQL Server.
 
+## [Link to Jira](https://harryfrescotest.atlassian.net/secure/RapidBoard.jspa?rapidView=4&useStoredSettings=true&atlOrigin=eyJpIjoiNDg4MTY0ZDE2ZDZhNGFhOWEyMTQ3MzJmYjA5MTE4YjEiLCJwIjoiaiJ9)
 
 ## Getting Started
 
@@ -21,7 +22,25 @@ Install: Maven
 
 ```
 
-### Installing
+## Deployment
+
+To run the .jar file from the command-line, navigate to the MainProject where the To-Do-List-Project-x.x.x-SNAPSHOT.jar_ file is and execute the following command:
+
+Example:
+```
+java -jar To-Do-List-Project-0.0.1-SNAPSHOT.jar
+```
+Once running, in your browser, go to the URL:
+
+```
+localhost:9092
+```
+
+The webpage is then shown. This is where you can select the entities and then perform CRUD operations.
+
+
+
+## Running in IDE
 
 Once this repo has been downloaded or cloned, open the project (MainProject) in Spring Tool Suite. Then to run the program, you need to perform the following actions:
 
@@ -69,19 +88,12 @@ It usually takes 30 seconds to complete all tests. The coverage for src/test/jav
 ### Selenium
 Once the MainProject is running locally on port 9092, import the Selenium project, right-click Selenium/src/test/java, Run As -> JUnit Test.
 This will then test the webpage by performing tasks on it.
+
 At the moment, the tests are:
 -Add List
 -Add Item to the List
 -Check if both are successful
 
-## Deployment
-
-To run the .jar file from the command-line, navigate to the directory that holds the _ims-x.x.x-jar-with-dependencies.jar_ file and execute the following command once you have ensured that a MySQL localhost Server is running on your machine:
-
-Example:
-```
-java -jar ims-0.0.1-jar-with-dependencies.jar
-```
 
 
 ## Built With
