@@ -45,19 +45,16 @@ public class ItemService {
 	}
 	// update
 	public ItemDTO update(ItemDTO itemDTO, Long id) {
-		// check if record exists
 		Item toUpdate = this.repo.findById(id).orElseThrow(ItemNotFoundException::new);
-		// set the record to update
 		toUpdate.setTitle(itemDTO.getTitle());
-		// check update for any nulls
 		SpringBeanUtil.mergeNotNull(itemDTO, toUpdate);
-		// return the method from repo
+		// Map object to dto then return
 		return this.mapToDTO(this.repo.save(toUpdate));
 
 	}
 	// Delete
 	public boolean delete(Long id) {
-		this.repo.deleteById(id);// true
-		return !this.repo.existsById(id);// true
+		this.repo.deleteById(id);
+		return !this.repo.existsById(id);
 	}
 }

@@ -24,7 +24,7 @@ import com.example.demo.service.ItemService;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/item") // this is to further define the path
+@RequestMapping("/item")
 public class ItemController {
 
 		private ItemService service;
@@ -40,7 +40,7 @@ public class ItemController {
 		public ResponseEntity<ItemDTO> create(@RequestBody Item item) {
 			ItemDTO created = this.service.create(item);
 			return new ResponseEntity<>(created, HttpStatus.CREATED);
-			// http status code - 201 (created)
+
 
 		}
 

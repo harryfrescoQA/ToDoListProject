@@ -12,7 +12,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@Entity // classes that represent tables in our DB
+@Entity
 @Data
 @NoArgsConstructor
 public class FullList {

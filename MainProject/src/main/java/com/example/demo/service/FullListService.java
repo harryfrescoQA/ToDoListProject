@@ -50,18 +50,17 @@ public class FullListService {
 	public FullListDTO update(FullListDTO fullListDTO, Long id) {
 		// check if record exists
 		FullList toUpdate = this.repo.findById(id).orElseThrow(FullListNotFoundException::new);
-		// set the record to update
 		toUpdate.setTitle(fullListDTO.getTitle());
-		// check update for any nulls
 		SpringBeanUtil.mergeNotNull(fullListDTO, toUpdate);
-		// retun the method from repo
+
+		// Map object to dto then return
 		return this.mapToDTO(this.repo.save(toUpdate));
 
 	}
 
 	// Delete
 	public boolean delete(Long id) {
-		this.repo.deleteById(id);// true
-		return !this.repo.existsById(id);// true
+		this.repo.deleteById(id);
+		return !this.repo.existsById(id);
 	}
 }
