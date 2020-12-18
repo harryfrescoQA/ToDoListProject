@@ -90,10 +90,13 @@ It usually takes 30 seconds to complete all tests. The coverage for src/test/jav
 **Once the MainProject is running locally on port 9092**, import the Selenium project, right-click Selenium/src/test/java, Run As -> JUnit Test.
 This will then test the webpage by performing tasks on it.
 
+*There may be an error in which they are executed in a different order. In order to fix this, right click each test individually.*
 At the moment, the tests are:
 *Add List
 *Add Item to the List
 *Check if both are successful
+*Delete a list
+*Check if successful
 
 
 

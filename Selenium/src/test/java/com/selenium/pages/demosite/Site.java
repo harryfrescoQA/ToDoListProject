@@ -15,6 +15,9 @@ public class Site {
 	@FindBy(xpath = "//*[@id=\"createList\"]/a")
 	private WebElement addList;
 	
+	
+	@FindBy(xpath="/html/body/div[2]/div/div/button")
+	private WebElement deleteList;
 
 	
 	// pages
@@ -32,6 +35,10 @@ public class Site {
 	
 	public void navListPage() {
 		addList.click();
+	}
+	
+	public void deleteList() {
+		deleteList.click();
 	}
 
 }

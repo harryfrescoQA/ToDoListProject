@@ -7,6 +7,7 @@ package com.selenium;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,8 +15,9 @@ import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
-
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -31,7 +33,7 @@ public class DemoSiteTest {
     private static Logger LOGGER = Logger.getGlobal();
    
     @Before
-    public static void initialise(){
+    public  void initialise(){
         LOGGER.setLevel(Level.ALL);
         System.setProperty("webdriver.chrome.driver", "src/test/resources/selenium/chromedriver.exe");
         driver = new ChromeDriver();
@@ -91,7 +93,7 @@ public class DemoSiteTest {
     	 
         LOGGER.warning("Connecting to site....");
         Site webpage = PageFactory.initElements(driver, Site.class);
-        AddList addList = PageFactory.initElements(driver, AddList.class);
+        //AddList addList = PageFactory.initElements(driver, AddList.class);
         AddItem addItem = PageFactory.initElements(driver, AddItem.class);
         //DemoLogInUser login = PageFactory.initElements(driver, DemoLogInUser.class);
         // STAGE 1 - navigate to site.
@@ -105,7 +107,7 @@ public class DemoSiteTest {
             
             webpage.navMainPage();
             webpage.navListPage();
-            addList.createUser("Hello");
+           // addList.createUser("Hello");
                         
         // STAGE 3 - Create item
         // ========================================
@@ -131,8 +133,74 @@ public class DemoSiteTest {
             assertEquals("1" +" - "+ item + " - "+ message+"DoneEdit ItemDelete item", res);
 
     }
+    @Test
+    public void deleteItem() throws InterruptedException{
+    	 
+        LOGGER.warning("Connecting to site....");
+        Site webpage = PageFactory.initElements(driver, Site.class);
+       
+        // STAGE 1 - navigate to site.
+        // ========================================
+            // I want to navigate to....
+        	driver.get(Site.URL);
+        	
+        // STAGE 2 - delete an item.
+        // ========================================
+            LOGGER.info("Deleting list...\n");
+            
+            webpage.navMainPage();
+           // webpage.navListPage();
+            List <WebElement> custButtons = driver.findElements(By.id("listButton"));
+            custButtons.get(0).click();
+            driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+           //webpage.deleteList();
+          
+            List <WebElement> custButtons2 = driver.findElements(By.id("listButton"));
+            custButtons2.get(2).click();
+          driver.switchTo().alert().accept();
+            driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+        // STAGE 4 - check success.
+        // ========================================
+            LOGGER.info("Checking success of automated test...\n");
+            driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+            int exists = driver.findElements( By.id("listDiv") ).size();
+            
+            assertEquals(1, exists);
+
+    }
+    @Test
+    public void deleteList() throws InterruptedException{
+    	 
+        LOGGER.warning("Connecting to site....");
+        Site webpage = PageFactory.initElements(driver, Site.class);
+       
+        // STAGE 1 - navigate to site.
+        // ========================================
+            // I want to navigate to....
+        	driver.get(Site.URL);
+        	
+        // STAGE 2 - delete a list.
+        // ========================================
+            LOGGER.info("Deleting list...\n");
+            
+            webpage.navMainPage();
+            List <WebElement> custButtons = driver.findElements(By.id("listButton"));
+            custButtons.get(2).click();
+            driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+           //webpage.deleteList();
+           driver.switchTo().alert().accept();
+            
+        // STAGE 4 - check success.
+        // ========================================
+            LOGGER.info("Checking success of automated test...\n");
+            driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+            int exists = driver.findElements( By.id("listDiv") ).size();
+            
+            assertEquals(1, exists);
+
+    }
     @After
-    public static void tearDown() {
+    public  void tearDown() {
         LOGGER.warning("Closing webdriver instance!");
 
         driver.close();
