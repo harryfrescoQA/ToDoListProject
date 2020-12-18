@@ -10,11 +10,16 @@ public class AddList {
 	WebElement listField;
 	
 	@FindBy(xpath = "/html/body/div[2]/div/form/button")
+	public
 	WebElement createList;
 
 	@FindBy(id = "listDiv")
 	public
 	WebElement checkItem;
+	
+	@FindBy(xpath = "/html/body/div[2]/div/form/button")
+	public
+	WebElement updateItem;
 	
 	// CONSTRUCTOR
 	public AddList() {
